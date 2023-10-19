@@ -1,0 +1,34 @@
+ion-header {
+    ion-toolbar {
+      --ion-color-primary: #3880ff; /* Adjust primary color as needed */
+      --ion-color-contrast: #fff; /* Text color on the toolbar */
+    }
+  }
+  
+  ion-content {
+    --ion-background-color: #f4f5f8; /* Background color for the content area */
+  }
+  
+  ion-searchbar {
+    --ion-color-primary: #3880ff; /* Adjust to match primary color */
+    --ion-color-searchbar-icon: #777; /* Color of the search icon */
+    --ion-color-searchbar-placeholder: #999; /* Color of the search placeholder text */
+    --ion-color-searchbar-inactive: #ccc; /* Color when search bar is inactive */
+  }
+  
+  .search-results {
+    ion-item {
+      // Style your search result items here
+      ion-label {
+        font-weight: bold;
+      }
+    }
+  }
+  
+
+ion-card-title {
+  display: flex;
+  align-items: left; /* จัดวาง element ให้อยู่ตรงกลางตามแนวตั้ง */
+  font-weight: bold;
+  font-size: 1.9em;
+}

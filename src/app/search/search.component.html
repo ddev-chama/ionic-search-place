@@ -1,0 +1,19 @@
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="onSearchInput()">
+    <!-- <ion-button slot="end" (click)="startVoiceRecognition()">
+      <ion-icon name="mic"></ion-icon> -->
+  </ion-searchbar>
+
+     <ion-list>
+      <ion-item *ngFor="let item of searchData" (click)="onCardClick(item.id)">
+        <ion-thumbnail slot="start">
+          <img [src]="item.img" alt="Thumbnail">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ item.place }}</h2>
+          <h4>{{item.type}}</h4>
+          <p *ngIf="item.service1">{{ item.service1}} {{ item.service2}} {{ item.service3}} {{ item.service4}}</p>
+          <p>{{ item.address }}</p>
+          <p>{{ item.mood }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>

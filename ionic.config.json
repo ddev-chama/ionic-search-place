@@ -1,0 +1,7 @@
+{
+  "name": "ku-navigator",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
