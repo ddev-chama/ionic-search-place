@@ -1,14 +1,22 @@
-  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="onSearchInput()">
-    <!-- <ion-button slot="end" (click)="startVoiceRecognition()">
-      <ion-icon name="mic"></ion-icon> -->
-  </ion-searchbar>
+  <ion-list>
+    <ion-item>
+      <ion-select interface="action-sheet" cancelText="ยกเลิก" [(ngModel)]="selectedOption" (ionChange)="onSegmentChange()" value="mood">
+        <ion-select-option value="mood">Mood</ion-select-option>
+        <ion-select-option value="address">Address</ion-select-option>
+        <ion-select-option value="type">Type</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <!-- Add more options as needed -->
+  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onSearchInput()"></ion-searchbar>
+
 
      <ion-list>
-      <ion-item *ngFor="let item of searchData" (click)="onCardClick(item.id)">
-        <ion-thumbnail slot="start">
-          <img [src]="item.img" alt="Thumbnail">
-        </ion-thumbnail>
-        <ion-label>
+       <ion-item *ngFor="let item of searchData" (click)="onCardClick(item.id)">
+         <ion-thumbnail slot="start">
+           <img [src]="item.img" alt="Thumbnail">
+          </ion-thumbnail>
+          <ion-label>
           <h2>{{ item.place }}</h2>
           <h4>{{item.type}}</h4>
           <p *ngIf="item.service1">{{ item.service1}} {{ item.service2}} {{ item.service3}} {{ item.service4}}</p>
@@ -16,4 +24,7 @@
           <p>{{ item.mood }}</p>
         </ion-label>
       </ion-item>
+      <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
     </ion-list>

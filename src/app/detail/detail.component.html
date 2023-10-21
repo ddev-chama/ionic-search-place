@@ -17,10 +17,13 @@
       </ion-thumbnail>
       <img [src]="item?.img" alt="Thumbnail">
       <ion-card-title>{{ item?.place }}</ion-card-title>
-      <ion-card-subtitle>คะแนน {{ item?.rate }} • รีวิวทั้งหมด {{ item?.review }}</ion-card-subtitle>
-      <ion-card-subtitle *ngIf="item?.service1">{{ item?.service1 }} • {{ item?.service2 }}• {{ item?.service3 }}• {{ item?.service4 }}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
+      <div>คะแนน {{ item?.rate }} • รีวิวทั้งหมด {{ item?.review }}</div>
+      <span *ngIf="item?.service1">{{ item?.service1 }} • </span>
+      <span *ngIf="item?.service2">{{ item?.service2 }} • </span>
+      <span *ngIf="item?.service3">{{ item?.service3 }} • </span>
+      <span *ngIf="item?.service4">{{ item?.service4 }}  </span>
       <div>{{item?.address}}</div>
     </ion-card-content>
       <div class="iframe" [innerHTML]="sanitizeHtml(item?.src)"></div>
