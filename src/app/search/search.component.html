@@ -1,3 +1,4 @@
+  <!-- filter -->
   <ion-list>
     <ion-item>
       <ion-select interface="action-sheet" cancelText="ยกเลิก" [(ngModel)]="selectedOption" (ionChange)="onSegmentChange()" value="mood">
@@ -7,10 +8,43 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <!-- Add more options as needed -->
-  <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onSearchInput()"></ion-searchbar>
+  <!-- search-bar -->
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="10">
+        <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="onSearchInput()" animated="true"></ion-searchbar>
+        <ion-note position="helper">การค้นหาประเภท {{selectedOption}} ทั้งหมด {{rowCount.length}} ตำแหน่ง</ion-note>
+      </ion-col>
+      <ion-col size="2">
+          <ion-item>
+            
+            <ion-select
+              [(ngModel)]="searchTerm" 
+              (ionChange)="shortSearch()"
+              label="⭐"
+              [interfaceOptions]="customActionSheetOptions"
+              okText="ยืนยัน" 
+              cancelText="ยกเลิก"
+              value="red"
+            >
+              <ion-select-option value="กระหาย">กระหาย</ion-select-option>
+              <ion-select-option value="กาแฟ">กาแฟ</ion-select-option>
+              <ion-select-option value="กินข้าว">กินข้าว</ion-select-option>
+              <ion-select-option value="ง่วง">ง่วง</ion-select-option>
+              <ion-select-option value="ตลาด">ตลาด</ion-select-option>
+              <ion-select-option value="น้ำมัน">น้ำมัน</ion-select-option>
+              <ion-select-option value="พักรถ">พักรถ</ion-select-option>
+              <ion-select-option value="วัด">วัด</ion-select-option>
+              <ion-select-option value="หิว">หิว</ion-select-option>
+              <ion-select-option value="ออกกำลังกาย">ออกกำลังกาย</ion-select-option>
+              
+            </ion-select>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-
+<!-- Content -->
      <ion-list>
        <ion-item *ngFor="let item of searchData" (click)="onCardClick(item.id)">
          <ion-thumbnail slot="start">
