@@ -6,8 +6,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ReadService {
-  private apiUrl = 'https://sheet.best/api/sheets/13a976a0-a82f-4301-9de5-c138d5c07074'; // Replace with your API endpoint
-  private apiKey = 'VWWRcbcLaV4yopsl1@FNGThaH66k!-AhroFY!zl1hA!JBQdrlVHCZNZAwkx%KAYT'; // Replace with your actual API key
+  private apiUrl = 'https://sheet.best/api/sheets/119bd0b5-6cb5-4088-b33c-aabc6d435316'; // Replace with your API endpoint
+  private apiKey = 'JxA4Alul2H2CUSnzFYShkG38db3_gsoRG1lHmA8S0LO8a1xwQNF2RFPVm39st1#!'; // Replace with your actual API key
 
   constructor(private http: HttpClient) {}
 

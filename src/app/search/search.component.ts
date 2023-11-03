@@ -101,11 +101,12 @@ export class SearchComponent implements OnInit {
     (data: any[]) => {
         
         this.fetchRow = data.filter(
-          item => item[this.selectedOption].toLowerCase().includes(this.searchTerm.toLowerCase())
+          item => item[this.selectedOption].includes(this.searchTerm.toLowerCase())
         );
 
          this.rowCount =   this.fetchRow;
          this.searchData =   this.fetchRow.slice(0,this.max.length+1);    
+         console.log(this.rowCount);
     });
   }
 }
