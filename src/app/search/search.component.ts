@@ -1,9 +1,9 @@
 // search.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { ReadService } from '../read-service/read.service';
 import { Selection } from './selection.interface';
-import { InfiniteScrollCustomEvent } from '@ionic/angular';
+import { InfiniteScrollCustomEvent,IonButton  } from '@ionic/angular';
 
 @Component({
   selector: 'app-search',
@@ -12,13 +12,18 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
 })
 
 export class SearchComponent implements OnInit {
+  
   searchTerm: string = '';
   selectedOption: keyof Selection = 'mood';
+  ChoiceOption: any;
   searchData: any[] = [];
   selectionKeys: (keyof Selection)[] = [];
   max:any[] = [];
   rowCount: any;
   fetchRow: any;
+  @ViewChild('element1') element1: any;
+  @ViewChild('element2') element2: any;
+  @ViewChild('element3') element3: any;
 
   constructor(private readService: ReadService, private router: Router) {}
 
@@ -34,17 +39,19 @@ export class SearchComponent implements OnInit {
     // console.log(this.selectedOption);
     // Populate the selectionKeys array with the keys of Selection
     this.selectionKeys = Object.keys({} as Selection) as (keyof Selection)[];
+
+    this.ChoiceOption = "ความรู้สึก";
   }
 
   async onSearchInput() {
     // this.max = [];
     await this.LazyGenerateData();
     this.fetchData();
+
   }
   
   async shortSearch() {
     // this.max = [];
-    this.selectedOption = 'mood';
     await this.LazyGenerateData();
     await this.fetchData();
   }
@@ -53,6 +60,19 @@ export class SearchComponent implements OnInit {
     this.max = [];
     await this.LazyGenerateData();
     await this.fetchData();
+
+    if (this.selectedOption == 'mood') {
+      this.element1.open();
+      this.ChoiceOption = "ความรู้สึก";
+    }
+    else if (this.selectedOption =='address') {
+      this.element2.open();
+      this.ChoiceOption = "สถานที่";
+    }
+    else if (this.selectedOption == 'tyoe') {
+      this.element3.open();
+      this.ChoiceOption = "กิจกรรม";
+    }
   }
 
   onCardClick(id: number) {
